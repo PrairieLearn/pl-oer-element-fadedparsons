@@ -1,0 +1,125 @@
+.fpp-global-defs {
+  --focus-border-color: var(--bs-primary, var(--primary, #007bff));
+  --motion-border-color: #d0a62a;
+  background: var(--code-background);
+}
+
+code {
+  font-size: 100%;
+}
+
+.pl-faded-parsons {
+  padding: 10px;
+}
+
+.aria-descriptor, .aria-details {
+  display: none;
+  width: 100%;
+  padding: 2px;
+  margin-block-end: 3px;
+}
+
+.aria-details {
+  font-style: italic;
+  font-size: 90%;
+}
+
+.soft-border {
+  border: 2px solid grey;
+  border-radius: 5px;
+}
+
+.codeline-tray {
+  padding: 0 0.5em;
+  position: static;
+  float: left;
+}
+
+.codeline-tray.starter-code-tray {
+  background: #4448;
+}
+
+.codeline-tray ol {
+  font-size: smaller;
+  font-family: monospace;
+  list-style: none;
+  padding-bottom: 60px;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.codeline-tray ol:empty {
+  padding-bottom: 80px;
+}
+
+.codeline-tray li,
+.codeline-tray li:before,
+.codeline-tray li:after {
+  box-sizing: content-box;
+}
+
+.codeline-tray li:hover {
+  border-color: var(--focus-border-color);
+  overflow: visible;
+}
+
+.codeline-tray li:focus,
+.codeline-tray li:focus-within {
+  outline: 2px solid var(--focus-border-color);
+  border-color: var(--focus-border-color);
+  border-radius: 15px;
+}
+
+.codeline-tray li.codeline-in-motion {
+  outline: 4px solid var(--motion-border-color) !important;
+  border-color: var(--motion-border-color);
+  margin: 12px;
+  rotate: -2deg;
+}
+
+.codeline-tray li {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border-right: 2px solid var(--pln-txt-color);
+  border-left: 2px solid var(--pln-txt-color);
+  background-color: var(--code-background);
+  padding: 2px;
+  padding-left: 3ch;
+  text-indent: -2ch;
+  /* 0.6ch */
+  margin-top: 5px;
+  overflow: hidden;
+  cursor: move;
+  outline: 0;
+}
+
+.codeline-tray li span:before {
+  content: "\200b";
+}
+
+.codeline-tray input.parsons-blank {
+  border-width: 0px;
+  border-bottom: solid 2px var(--pln-txt-color);
+  width: 3em;
+  min-width: 2em;
+  padding: 5px;
+  font-family: monospace;
+  background-color: var(--code-background);
+  color: var(--pln-txt-color);
+  border-radius: 5px;
+}
+
+.codeline-tray input.parsons-blank:focus {
+  outline-color: var(--focus-border-color);
+}
+
+.toolbar {
+  margin: -10px;
+  margin-top: 2px;
+  background: #e0e0e030;
+  font-size: 90%;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+  border-radius: 0;
+}
