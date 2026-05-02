@@ -1,0 +1,16 @@
+{
+    "uuid": "9fc029e1-118c-4210-92c0-c5d29d23b6ca",
+    "title": "Element Demo: Faded Parsons Problem with context before and after ",
+    "topic": "",
+    "tags": [
+        "berkeley",
+        "basic-parsons"
+    ],
+    "type": "v3",
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "enabled": true,
+        "image": "prairielearn/grader-python",
+        "entrypoint": "/python_autograder/run.sh"
+    }
+}

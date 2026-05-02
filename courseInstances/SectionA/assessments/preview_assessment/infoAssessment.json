@@ -14,7 +14,13 @@
         {
 	    "title": "Element preview", 
             "questions": [
-                { "id": "fadedParsons",           "points": 1}
+                { "id": "basic-python-parsons",           "points": 1},
+                { "id": "python-faded-parsons",           "points": 1},
+                { "id": "python-faded-parsons-inline",           "points": 1},
+                { "id": "python-faded-parsons-prefill",           "points": 1},
+                { "id": "python-faded-parsons-multiple",           "points": 1},
+                { "id": "python-faded-parsons-pre-post",           "points": 1},
+                { "id": "ruby-faded-parsons-grading",           "points": 1}
             ]
         },
         {

@@ -1,0 +1,14 @@
+{
+    "uuid": "9a6e9117-95f0-4425-b40c-e6e95fcd12b8",
+    "title": "Element Demo: Parsons Problem with Python auto-grader",
+    "topic": "",
+    "tags": [
+        "berkeley",
+        "basic-parsons"
+    ],
+    "type": "v3",
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "image": "prairielearn/grader-python"
+    }
+}

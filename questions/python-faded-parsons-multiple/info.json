@@ -1,0 +1,14 @@
+{
+    "uuid": "57C23321-E066-422A-AD93-B93C098C19AC",
+    "title": "Element Demo: Faded Parsons Problem with multiple faded inputs per block",
+    "topic": "",
+    "tags": [
+        "berkeley",
+        "faded"
+    ],
+    "type": "v3",
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "image": "prairielearn/grader-python"
+    }
+}

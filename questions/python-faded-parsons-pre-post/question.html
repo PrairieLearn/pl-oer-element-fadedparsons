@@ -1,0 +1,25 @@
+<!-- AUTO-GENERATED FILE -->
+<pl-question-panel>
+<markdown>
+This is an example of a Faded Parsons Problem where some pre-text and post-text is given as context before and after the main problem. Those lines of code cannot be re-arranged. 
+
+Note that only the one-tray format supports pre-text and post-text blocks.
+</markdown>
+</pl-question-panel>
+
+<pl-faded-parsons answers-name="fpp" format="one-tray" language="python">
+  <pre-text>
+    class ListHelpers:
+        @staticmethod
+  </pre-text>
+  <code-lines visual-indent="1">
+        def total(nums: list): #0given
+            running_total = 0
+            for number in nums:
+                running_total += number
+            return running_total
+  </code-lines>
+  <post-text>
+    print(ListHelpers.total([1,2,3]))  # for example
+  </post-text>
+</pl-faded-parsons>

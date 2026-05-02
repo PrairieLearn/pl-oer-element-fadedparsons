@@ -1,0 +1,14 @@
+{
+    "uuid": "92D4C479-91EC-4519-A56D-0CEDDE883715",
+    "title": "Element Demo: Faded Parsons Problem with prefilled default text",
+    "topic": "",
+    "tags": [
+        "berkeley",
+        "faded"
+    ],
+    "type": "v3",
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "image": "prairielearn/grader-python"
+    }
+}

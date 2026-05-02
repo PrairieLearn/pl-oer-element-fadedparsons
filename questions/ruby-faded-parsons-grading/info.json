@@ -1,0 +1,20 @@
+{
+  "uuid": "6159d5fb-3fdd-467d-9d32-eaa0fa1d4e99",
+  "title": "Element Demo: Faded Parsons Problem using the Ruby auto-grader (RSpec)",
+  "topic": "mutation-graded",
+  "tags": [
+    "berkeley",
+    "faded",
+    "mutation-graded"
+  ],
+  "type": "v3",
+  "singleVariant": true,
+  "showCorrectAnswer": false,
+  "gradingMethod": "External",
+  "externalGradingOptions": {
+    "enabled": true,
+    "image": "saasbook/pl-rspec-autograder",
+    "entrypoint": "/grader/run.py",
+    "timeout": 60
+  }
+}

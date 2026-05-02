@@ -1,0 +1,72 @@
+<pl-question-panel>
+  <!-- AUTO-GENERATED FILE -->
+  <markdown>
+  This example question was taken from a lesson teaching unit-test writing in Ruby. In it, the students are asked to write a test suite for the `GiftCard` class, and the autograder introduces bugs for them to catch.
+
+  This example demonstrates how pl-faded-parsons can be used with auto-graders other than Python, and can also serve as an example for auto-grading unit tests written by students.
+
+  *Note: we disabled the line randomization and filled in the blanks for demo purposes.*
+
+  <hr>
+
+  Here is part of a class that models a gift card:
+
+  ```ruby
+  class GiftCard
+    attr_reader :balance, :error
+    def initialize(balance)
+      if balance < 0
+        raise ArgumentError.new("New gift card cannot have negative balance")
+      end
+      @balance = balance
+      @error = ""
+    end
+    # ...
+  end
+  ```
+  We perform assertions with RSpec by wrapping objects with `expect` and checking
+  if a condition supplied by calling `to` on the wrapped object is met. For example,
+  we can check if `@my_object` can `meet_my_condition` by writing:
+  `expect(@my_object).to meet_my_condition`.
+
+  In this question, construct tests that verify:
+  * a GiftCard is created successfully with a nonnegative balance
+  * a GiftCard cannot be created with a negative balance
+  ---
+  </markdown>
+</pl-question-panel>
+
+<!--
+* a withdrawal when there is enough cash returns success, and changes
+the card balance <br />
+* a withdrawal when there is not enough cash returns failure, provides
+an error message explaining the failure, and does not change the card balance. <br />
+-->
+
+</pl-question-panel>
+<!-- see README for where the various parts of question live -->
+
+<!-- the current rspec ag has a bug -- the solution doesn't work unless it is named student-parsons-solution -->
+<pl-faded-parsons answers-name="student-parsons-solution" format="one-tray" language="ruby">
+<pre-text>
+describe GiftCard do
+</pre-text>
+<code-lines>
+  it 'fails to instantiate with negative balance' do #0given
+    !BLANK { GiftCard.new(-1) }.to raise_error(ArgumentError) #1given #blank expect
+  end #0given
+  it 'successfully assigns a positive balance on instantiation' do #0given
+    gift_card = !BLANK.new(20) #1given #blank GiftCard
+    expect(gift_card.balance).to eq(20) #1given
+  end #0given
+</code-lines>
+<post-text>
+end
+
+</post-text>
+</pl-faded-parsons>
+
+<pl-question-panel>
+  <p class="alert alert-info">Note: It may take up to 30 seconds for the auto-grader to display results
+    after you press "Save & Grade".</p>
+</pl-question-panel>

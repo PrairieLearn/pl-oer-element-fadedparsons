@@ -1,0 +1,18 @@
+<!-- AUTO-GENERATED FILE -->
+<pl-question-panel>
+<markdown>
+This example includes a prefilled input for the "faded" blank in the code. This can be used for hints or placeholders.
+
+Complete the code that counts words whose length meets a minimum threshold. Note that there is also a distractor among the available blocks.
+</markdown>
+</pl-question-panel>
+
+<pl-faded-parsons answers-name="fpp" language="python">
+  def count_long_words(words, min_len): #0given
+    count = 0 #1given
+    for word in words: #1given
+      if len(word) >= !BLANK: #blank min_len
+        count += 1 #2given
+    count = len(words) #distractor
+    return count #1given
+</pl-faded-parsons>

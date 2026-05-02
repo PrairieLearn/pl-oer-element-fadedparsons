@@ -1,0 +1,23 @@
+<!-- AUTO-GENERATED FILE -->
+<pl-question-panel>
+<markdown>
+This is an example of a simple Parsons Problem without any "faded" inputs to fill. 
+
+Conceptually, this question is very similar to one that uses `pl-order-blocks`, with the difference that `pl-faded-parsons` runs the [standard python autograder](https://docs.prairielearn.com/python-grader/#overview) and uses a test suited to determine if a submission is correct. This allows questions with a wide range of possible solutions. As long as the student's solution passes the same test suite as the provided correct solution, it gets full credit!
+
+To solve this question, drag code from the starter tray on the left to the solution tray on the right. Rearrange and re-indent the lines in the solution tray, and fill in any blanks. Then hit save and grade. Note that there is a red-herring "distractor" line! 
+
+*Note: Keyboard controls are available and listed in the (?) button*
+</markdown>
+</pl-question-panel>
+
+<!-- see README for where the various parts of question live -->
+<pl-faded-parsons answers-name="fpp" language="python">
+  def fibonacci(n: int): #0given
+    if n <= 2: #1given
+      return 1 #2given
+    n_less_2 = fibonacci(n - 2)
+    n_less_1 = fibonacci(n - 1)
+    n_less_0 = fibonacci(n) #distractor
+    return n_less_1 + n_less_2 #1given
+</pl-faded-parsons>
