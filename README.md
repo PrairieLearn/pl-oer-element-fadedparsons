@@ -9,6 +9,7 @@ If you like this element, you can use it in your own PrairieLearn course by copy
 
 This element creates a "faded" version of a Parsons Problem, where students drag and drop lines of code into order. In the faded version of the problem, students also fill in gaps in the code via embedded text inputs. This element is conceptually similar to `pl-order-blocks`, but adds support for faded code fragments and uses test-based grading (e.g., via the Python auto-grader) rather than comparing submissions to a sample solution. The latter can be beneficial when multiple correct solutions for a problem exist.
 
+
 ### Element Attributes
 
 | Attribute | Type | Description |
@@ -20,6 +21,43 @@ This element creates a "faded" version of a Parsons Problem, where students drag
 | `solution-path` | string (default: `"./solution"`) | Name of the solution code file displayed in the answer panel. If language is set to `"python"` and no valid path is provided, the path is automatically inferred as `"tests/ans.py"`. |
 | `max-indent-level` | integer (default: `5`) | Maximum indentation level for student submissions. |
 | `enable-copy-code` | boolean (default: `false`) | Whether a button should be displayed that allows students to copy their submission as plain text. |
+
+
+### How to Use This Element
+
+#### Question configuration and grading
+
+Generally, questions that use `pl-faded-parsons` should be configured the same way as standard coding questions. For example, to use the element for Python questions, refer to the [Python auto-grading documentation](https://docs.prairielearn.com/python-grader/) and configure your `info.json` file to use the Python auto-grader:
+
+```json title="info.json"
+{
+	// other configuration...
+	"gradingMethod": "External",
+	"externalGradingOptions": {
+	  "image": "prairielearn/grader-python"
+	}
+}
+```
+
+Unit tests should be configured as usual for the external auto-grader, so for example, Python coding questions should provide a sample solution in `"tests/ans.py"` and unit tests in `tests/test.py`.
+
+
+#### Scaffolding syntax
+
+The provided scaffolding code is set up directly within the `question.html` file inside the `<pl-faded-parsons>` tags. Note that unlike in `pl-order-blocks`, this code is not directly used for grading purposes, and the sample solution file (e.g., `"tests/ans.py"`) is what gets displayed to students in the answer panel.
+
+The scaffolding code is automatically broken down line-by-line into re-arrangeable blocks. Any indentation is stripped and serves solely to make the question file easier to read. Blocks are shuffled and added to the available block tray (or directly to the coding canvas for questions that use the "one-tray" format).
+
+To provide preset blocks at a certain location in the coding canvas, annotate the line with `#Ngiven`, where `N` is the block's initial indentation level. These blocks are inserted into the coding canvas in the same order as they appear in the question file. Note that preset blocks can still be re-arranged by students.
+
+You can also annotate lines as `#distractor` to mark that they should not appear in a valid solution. This annotation is purely for readability purposes and not used in the question or grading logic. Submissions that contain `#distractor` blocks are still auto-graded based on the provided tests.
+
+To add "faded" text inputs to code blocks, use the annotation `!BLANK` in place of the missing value. For example, `return !BLANK` would provide students with a return statement scaffold, but let them input the returned value as text. The annotation `#blank prefill` can be used to insert a `prefill` value into a text box. 
+
+Multiple `!BLANK` annotations can be used in the same line. You can use separate annotations (i.e., `#blank A #blank B`) to prefill them left to right.
+
+When designing questions, keep in mind that students can enter arbitrary text into text boxes. This means that they could, for example, add unintended delimiters or return statements to "break out of" the provided scaffold. You should always use careful unit testing for grading purposes and not rely on scaffolding to restrict the range of possible student submissions.
+
 
 ### Examples
 
@@ -47,6 +85,7 @@ Notice how the reference answer and student answer don't exactly match, even tho
 
 ![Python auto-grading output](images/python-out.png)
 
+
 #### Faded Parsons Problem
 
 ```html
@@ -61,6 +100,7 @@ Notice how the reference answer and student answer don't exactly match, even tho
 ![Faded Parsons example](images/faded-parsons.png)
 
 This is a Faded Parsons Problem with blanks that need to be filled by students. In the screenshot, one of the blanks is already filled by the student. It is also possible to configure the problem so that some blanks are prefilled, for example with placeholder values or hints.
+
 
 #### One-Tray Faded Parsons Problem
 
@@ -96,7 +136,18 @@ Note that the example above is written in Ruby to demonstrate that this element 
 ![Ruby auto-grading output](images/ruby-out.png)
 
 
-### Work around `pl-faded-parsons`
+### Credits and Thanks
+
+The element is the product of the work of
+- Serena Caraco ([github](https://www.github.com/SybelBlue))
+- Nelson Lojo ([github](https://www.github.com/nelson-lojo), [linkedin](https://www.linkedin.com/in/nelson-lojo))
+- Nathaniel (Weinman) Gainsboro during his PhD @ UC Berkeley ([linkedin](https://www.linkedin.com/in/nate-gainsboro), [google scholar](https://scholar.google.com/citations?user=OlvIQyoAAAAJ&hl=en))
+- Armando Fox, generously advising them all ([github](https://github.com/armandofox), [homepage](https://www.armandofox.com/))
+
+
+#### More Work on Faded Parsons Problems
+
+The following work provides more context on the benefits of Faded Parsons Problems and the motivation for and implementation of this element: 
 
 [Nathaniel Weinman, Armando Fox, and Marti A. Hearst. 2021. Improving Instruction of Programming Patterns with Faded Parsons Problems. In Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems (CHI '21). Association for Computing Machinery, New York, NY, USA, Article 53, 1–4. https://doi.org/10.1145/3411764.3445228](https://dl.acm.org/doi/10.1145/3411764.3445228)
 
