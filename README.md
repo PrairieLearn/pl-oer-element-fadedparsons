@@ -1,6 +1,6 @@
 # PrairieLearn OER Element: Faded Parsons Problem
 
-This element was developed by Nelson Lojo at UC Berkeley. Please carefully test the element and understand its features and limitations before deploying it in a course. It is provided as-is and not officially maintained by PrairieLearn, so we can only provide limited support for any issues you encounter!
+This element was developed by the [ACE Lab at UC Berkeley](https://acelab.berkeley.edu). Please carefully test the element and understand its features and limitations before deploying it in a course. It is provided as-is and not officially maintained by PrairieLearn, so we can only provide limited support for any issues you encounter!
 
 If you like this element, you can use it in your own PrairieLearn course by copying the contents of the `elements` folder into your own course repository. After syncing, the element can be used as illustrated by the example question that is also contained in this repository.
 
@@ -140,10 +140,10 @@ Note that the example above is written in Ruby to demonstrate that this element 
 ### Credits and Thanks
 
 The element is the product of the work of
-- Serena Caraco ([github](https://www.github.com/SybelBlue))
-- Nelson Lojo ([github](https://www.github.com/nelson-lojo), [linkedin](https://www.linkedin.com/in/nelson-lojo))
-- Nathaniel (Weinman) Gainsboro during his PhD @ UC Berkeley ([linkedin](https://www.linkedin.com/in/nate-gainsboro), [google scholar](https://scholar.google.com/citations?user=OlvIQyoAAAAJ&hl=en))
-- Armando Fox, generously advising them all ([github](https://github.com/armandofox), [homepage](https://www.armandofox.com/))
+- Serena Caraco ([GitHub](https://www.github.com/SybelBlue))
+- Nelson Lojo ([GitHub](https://www.github.com/nelson-lojo), [LinkedIn](https://www.linkedin.com/in/nelson-lojo))
+- Nathaniel (Weinman) Gainsboro during his PhD @ UC Berkeley ([LinkedIn](https://www.linkedin.com/in/nate-gainsboro), [Google Scholar](https://scholar.google.com/citations?user=OlvIQyoAAAAJ&hl=en))
+- Armando Fox, generously advising them all ([GitHub](https://github.com/armandofox), [Homepage](https://www.armandofox.com/))
 
 
 #### More Work on Faded Parsons Problems
