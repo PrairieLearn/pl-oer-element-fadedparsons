@@ -21,6 +21,7 @@ This element creates a "faded" version of a Parsons Problem, where students drag
 | `solution-path` | string (default: `"./solution"`) | Name of the solution code file displayed in the answer panel. If language is set to `"python"` and no valid path is provided, the path is automatically inferred as `"tests/ans.py"`. |
 | `max-indent-level` | integer (default: `5`) | Maximum indentation level for student submissions. |
 | `enable-copy-code` | boolean (default: `false`) | Whether a button should be displayed that allows students to copy their submission as plain text. |
+| `log` | boolean (default: `false`) | Whether advanced logging should be enabled to record interactions with the element UI in the student submission data. This might be useful for research or debugging purposes.
 
 
 ### How to Use This Element
