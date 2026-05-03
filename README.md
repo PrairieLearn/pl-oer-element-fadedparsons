@@ -14,10 +14,10 @@ This element creates a "faded" version of a Parsons Problem, where students drag
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | `answers-name` | string (required) | Unique name for the element. |
-| `format` | string (default: `"right"`) | Format of the element. `"right"`/`"bottom"` for placement of the code canvas relative to the tray; `"one-tray"`` for one-tray format (see below). |
+| `format` | string (default: `"right"`) | Format of the element. `"right"`/`"bottom"` for placement of the code canvas relative to the tray; `"one-tray"` for one-tray format (see below). |
 | `language` | string (default: `""`) | Code language, primarily used for syntax highlighting. |
 | `file-name` | string (default: `"user_code.py"`) | Name for the code file submitted to the auto-grader. |
-| `solution-path` | string (default: `"./solution"`) | Name of the solution code file displayed in the answer panel. If language is set to `"python"` and no valid path is provided, the path is automatically inferred as `"tests/ans.py"``. |
+| `solution-path` | string (default: `"./solution"`) | Name of the solution code file displayed in the answer panel. If language is set to `"python"` and no valid path is provided, the path is automatically inferred as `"tests/ans.py"`. |
 | `max-indent-level` | integer (default: `5`) | Maximum indentation level for student submissions. |
 | `enable-copy-code` | boolean (default: `false`) | Whether a button should be displayed that allows students to copy their submission as plain text. |
 
