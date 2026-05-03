@@ -416,6 +416,8 @@ def _build_initial_state(
 
     for raw_line in config["markup"].strip().splitlines():
         line_text = raw_line.strip()
+        if not line_text:
+            continue
         line = _parse_markup_line(line_text)
 
         given_match = GIVEN_PATTERN.search(line_text)
