@@ -367,7 +367,7 @@ def _parse_line(value: Any) -> SavedLine:
         raise ParsingError("Line `blankValues` must be a list of strings.")
     if len(code_snippets) != len(blank_values) + 1:
         raise ParsingError(
-            "Each line must have exactly one more code snippet than blank value."
+            "Each line must have exactly one more code snippet than blank values."
         )
 
     return {
