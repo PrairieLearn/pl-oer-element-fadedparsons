@@ -8,11 +8,11 @@ Complete the code that counts words whose length meets a minimum threshold. Note
 </pl-question-panel>
 
 <pl-faded-parsons answers-name="fpp" language="python">
-  def count_long_words(words, min_len): #0given
-    count = 0 #1given
-    for word in words: #1given
-      if len(word) >= !BLANK: #blank min_len
-        count += 1 #2given
-    count = len(words) #distractor
-    return count #1given
+  def count_long_words(words, min_len): #pin
+    count = 0 #pin(1)
+    for word in words: #pin(1)
+      if len(word) >= __(min_len)__: #pin(2)
+        count += 1
+        count += min_len #distractor
+    return count #pin(1)
 </pl-faded-parsons>

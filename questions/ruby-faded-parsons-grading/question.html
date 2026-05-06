@@ -5,7 +5,7 @@
 
   This example demonstrates how pl-faded-parsons can be used with auto-graders other than Python, and can also serve as an example for auto-grading unit tests written by students.
 
-  *Note: we disabled the line randomization and filled in the blanks for demo purposes.*
+  *Note: we disabled the line randomization and place-held the answers for demo purposes.*
 
   <hr>
 
@@ -52,13 +52,13 @@ an error message explaining the failure, and does not change the card balance. <
 describe GiftCard do
 </pre-text>
 <code-lines>
-  it 'fails to instantiate with negative balance' do #0given
-    !BLANK { GiftCard.new(-1) }.to raise_error(ArgumentError) #1given #blank expect
-  end #0given
-  it 'successfully assigns a positive balance on instantiation' do #0given
-    gift_card = !BLANK.new(20) #1given #blank GiftCard
-    expect(gift_card.balance).to eq(20) #1given
-  end #0given
+  it 'fails to instantiate with negative balance' do #pin
+    __(expect)__ { GiftCard.new(-1) }.to raise_error(ArgumentError) #pin(1)
+  end #pin
+  it 'successfully assigns a positive balance on instantiation' do #pin
+    gift_card = __(GiftCard)__.new(20) #pin(1)
+    expect(gift_card.balance).to eq(20) #pin(1)
+  end #pin
 </code-lines>
 <post-text>
 end

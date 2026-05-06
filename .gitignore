@@ -1,10 +1,11 @@
-# macOS 
+# macOS
 *.DS_Store
 
-# Python 
+# Python
 __pycache__/
 *.pyc
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
+*.fish
