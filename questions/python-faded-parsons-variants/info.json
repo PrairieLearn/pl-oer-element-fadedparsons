@@ -1,0 +1,14 @@
+{
+    "uuid": "3AE5D91A-5B34-4D0E-A74E-6CD456C81E07",
+    "title": "Element Demo: Faded Parsons Problem with fading variants",
+    "topic": "",
+    "tags": [
+        "berkeley",
+        "faded"
+    ],
+    "type": "v3",
+    "gradingMethod": "External",
+    "externalGradingOptions": {
+        "image": "prairielearn/grader-python"
+    }
+}

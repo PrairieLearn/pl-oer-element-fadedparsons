@@ -1,0 +1,28 @@
+<!-- AUTO-GENERATED FILE -->
+<pl-question-panel>
+<markdown>
+This example includes "optional fades" and "optional distractors" that can be used to make different variants. Try hitting the *New Variant* button to see the problems shift.
+
+Complete the code that counts words whose length meets a minimum threshold. Note that there is also a distractor among the available blocks.
+</markdown>
+</pl-question-panel>
+
+<pl-faded-parsons answers-name="focused" language="python" max-distractors="2">
+  def stay_focused(name): #pin
+    return f"Focus, {name}!" #pin(1)
+    return f"Good morning, {name}!" #distractor
+    return f"You're so silly, {name}!" #distractor
+    return f"How ya doin', {name}?" #distractor
+    return f"Buenos dias, {name}!" #distractor
+    return f"Good job, {name}!" #distractor
+    return f"Good night, {name}!" #distractor
+    return f"Howdy, {name}!" #distractor
+</pl-faded-parsons>
+
+<pl-faded-parsons answers-name="average" language="python" max-optional-fades="2" format="one-tray">
+  def average(nums): #pin
+    avg = __[0]__ #pin(1)
+    __[for]__ n in __[nums]__: #pin(1)
+      __[avg]__ += __[n]__ #pin(2)
+    return __[avg]__ #pin(1)
+</pl-faded-parsons>
