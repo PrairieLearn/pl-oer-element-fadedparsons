@@ -1,23 +1,29 @@
-<!-- AUTO-GENERATED FILE -->
 <pl-question-panel>
 <markdown>
 This example includes "optional fades" and "optional distractors" that can be used to make different variants. Try hitting the *New Variant* button to see the problems shift.
 
-Complete the code that counts words whose length meets a minimum threshold. Note that there is also a distractor among the available blocks.
+*Note: We pinned down all the correct solution lines to demo the variant features clearly.*
+
+The first Parsons problem is solved.
+Fill in the fades in the second problem to generate the mean of a list of numbers.
 </markdown>
 </pl-question-panel>
 
 <pl-faded-parsons answers-name="focused" language="python" max-distractors="2">
   def stay_focused(name): #pin
-    return f"Focus, {name}!" #pin(1)
-    return f"Good morning, {name}!" #distractor
-    return f"You're so silly, {name}!" #distractor
-    return f"How ya doin', {name}?" #distractor
-    return f"Buenos dias, {name}!" #distractor
-    return f"Good job, {name}!" #distractor
-    return f"Good night, {name}!" #distractor
-    return f"Howdy, {name}!" #distractor
+  return f"Focus, {name}!" #pin(1)
+  return f"Good morning, {name}!" #distractor
+  return f"You're so silly, {name}!" #distractor
+  return f"How ya doin', {name}?" #distractor
+  return f"Buenos dias, {name}!" #distractor
+  return f"Good job, {name}!" #distractor
+  return f"Good night, {name}!" #distractor
+  return f"Howdy, {name}!" #distractor
 </pl-faded-parsons>
+
+<pl-question-panel>
+<br>
+</pl-question-panel>
 
 <pl-faded-parsons answers-name="average" language="python" max-optional-fades="2" format="one-tray">
   def average(nums): #pin
@@ -26,3 +32,18 @@ Complete the code that counts words whose length meets a minimum threshold. Note
       __[avg]__ += __[n]__ #pin(2)
     return __[avg]__ #pin(1)
 </pl-faded-parsons>
+
+<pl-submission-panel>
+  <div class="alert alert-info" role="status">
+    <strong>Grading details</strong>
+    <ul class="mb-0 mt-2">
+      {{#params.graded_specs}}
+      <li>
+        <strong>{{description}}</strong>
+        <code>{{answers_name}}</code>
+        - {{status_key}}: {{feedback}}
+      </li>
+      {{/params.graded_specs}}
+    </ul>
+  </div>
+</pl-submission-panel>

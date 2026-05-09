@@ -7,8 +7,5 @@
         "faded"
     ],
     "type": "v3",
-    "gradingMethod": "External",
-    "externalGradingOptions": {
-        "image": "prairielearn/grader-python"
-    }
+    "gradingMethod": "Internal"
 }
