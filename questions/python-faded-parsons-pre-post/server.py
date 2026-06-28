@@ -1,6 +1,7 @@
 # AUTO-GENERATED FILE
 # go to https://prairielearn.readthedocs.io/en/latest/python-grader/#serverpy for more info
 
+
 def generate(data):
     # Define incoming variables here
     names_for_user = [
@@ -10,7 +11,11 @@ def generate(data):
     # Define outgoing variables here
     names_from_user = [
         # ex: student defines a determinant function name det
-        {"name": "total", "description": "sums elements of list", "type": "python function"}
+        {
+            "name": "total",
+            "description": "sums elements of list",
+            "type": "python function",
+        }
     ]
 
     data["params"]["names_for_user"] = names_for_user

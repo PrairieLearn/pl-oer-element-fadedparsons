@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import prairielearn as pl # type: ignore
+import prairielearn as pl  # type: ignore
 import base64
 import html as html_lib
 import json
@@ -738,8 +738,10 @@ def _parse_author_markup_line(raw_text: str, line_no: int) -> MarkupLineInfo | N
         match groupdict:
             case {"solution_only": solution}:
                 placeholder = None
-            case {"solution": solution, "placeholder": placeholder} | \
-                 {"solution_rev": solution, "placeholder_rev": placeholder}:
+            case {"solution": solution, "placeholder": placeholder} | {
+                "solution_rev": solution,
+                "placeholder_rev": placeholder,
+            }:
                 pass
             case _:
                 raise SyntaxError("Invalid optional fade markup.")

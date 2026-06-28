@@ -46,7 +46,9 @@ def grade(data: dict[str, Any]):
     partial_scores = data.setdefault("partial_scores", {})
     submitted_answers = data.get("submitted_answers", {})
 
-    graded_specs = params["graded_specs"] = [] # reset graded specs list from previous runs
+    graded_specs = params[
+        "graded_specs"
+    ] = []  # reset graded specs list from previous runs
 
     for spec in ANSWER_SPECS:
         reference_fn = load_reference_answer(data, spec)

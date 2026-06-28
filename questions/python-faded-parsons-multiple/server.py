@@ -1,6 +1,7 @@
 # AUTO-GENERATED FILE
 # go to https://prairielearn.readthedocs.io/en/latest/python-grader/#serverpy for more info
 
+
 def generate(data):
     # Define incoming variables here
     names_for_user = [
@@ -11,7 +12,11 @@ def generate(data):
     names_from_user = [
         # ex: student defines a determinant function name det
         # {"name": "det", "description": "determinant for a 2x2 matrix", "type": "python function"}
-        { "name": "multiples_of_three", "description": "returns multiples of three up to a limit", "type": "python function"}
+        {
+            "name": "multiples_of_three",
+            "description": "returns multiples of three up to a limit",
+            "type": "python function",
+        }
     ]
 
     data["params"]["names_for_user"] = names_for_user

@@ -2,6 +2,7 @@ from pl_helpers import name, points
 from pl_unit_test import PLTestCase
 from code_feedback import Feedback
 
+
 def score_cases(student_fn, ref_fn, *cases):
     correct = 0
     for case in cases:
@@ -15,11 +16,14 @@ def score_cases(student_fn, ref_fn, *cases):
     else:
         Feedback.set_score(1.0)
 
+
 class Test(PLTestCase):
     @points(4)
     @name("simple thresholds")
     def test_0(self):
-        score_cases(self.st.count_long_words, self.ref.count_long_words,
+        score_cases(
+            self.st.count_long_words,
+            self.ref.count_long_words,
             (["a", "bb", "ccc"], 2),
             (["short", "tiny", "large"], 5),
         )
@@ -27,7 +31,9 @@ class Test(PLTestCase):
     @points(6)
     @name("empty and mixed")
     def test_1(self):
-        score_cases(self.st.count_long_words, self.ref.count_long_words,
+        score_cases(
+            self.st.count_long_words,
+            self.ref.count_long_words,
             ([], 3),
             (["python", "go", "rust", "c"], 4),
         )

@@ -2,6 +2,7 @@ from pl_helpers import name, points
 from pl_unit_test import PLTestCase
 from code_feedback import Feedback
 
+
 def score_cases(student_fn, ref_fn, *cases):
     correct = 0
     for case in cases:
@@ -15,11 +16,14 @@ def score_cases(student_fn, ref_fn, *cases):
     else:
         Feedback.set_score(1.0)
 
+
 class Test(PLTestCase):
     @points(4)
     @name("uppercase found")
     def test_0(self):
-        score_cases(self.st.first_uppercase, self.ref.first_uppercase,
+        score_cases(
+            self.st.first_uppercase,
+            self.ref.first_uppercase,
             ("abcD",),
             ("mNo",),
         )
@@ -27,7 +31,9 @@ class Test(PLTestCase):
     @points(6)
     @name("no uppercase")
     def test_1(self):
-        score_cases(self.st.first_uppercase, self.ref.first_uppercase,
+        score_cases(
+            self.st.first_uppercase,
+            self.ref.first_uppercase,
             ("lowercase only",),
             ("123 !?",),
         )

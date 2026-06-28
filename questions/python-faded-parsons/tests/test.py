@@ -2,6 +2,7 @@ from pl_helpers import name, points
 from pl_unit_test import PLTestCase
 from code_feedback import Feedback
 
+
 def score_cases(student_fn, ref_fn, *cases):
     correct = 0
     for case in cases:
@@ -16,21 +17,19 @@ def score_cases(student_fn, ref_fn, *cases):
     else:
         Feedback.set_score(1.0)
 
+
 class Test(PLTestCase):
     @points(2)
     @name("base cases")
     def test_0(self):
-        score_cases(self.st.fibonacci, self.ref.fibonacci,
-          (0,),
-          (1,),
-          (2,)
-        )
-
+        score_cases(self.st.fibonacci, self.ref.fibonacci, (0,), (1,), (2,))
 
     @points(8)
     @name("recursive cases")
     def test_1(self):
-        score_cases(self.st.fibonacci, self.ref.fibonacci,
+        score_cases(
+            self.st.fibonacci,
+            self.ref.fibonacci,
             (5,),
             (10,),
         )
