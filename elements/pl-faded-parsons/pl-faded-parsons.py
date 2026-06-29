@@ -582,12 +582,11 @@ def _build_answer_params(
     """Build the answer-panel payload from the parsed correct answer."""
 
     language = config.language
-    if config.solution_path is not None:
-        if solution_path := _resolve_solution_path(config):
-            return {
-                "language": language,
-                "solution_path": str(solution_path),
-            }
+    if solution_path := _resolve_solution_path(config):
+        return {
+            "language": language,
+            "solution_path": str(solution_path),
+        }
 
     correct_answer = data["correct_answers"].get(config.answers_name)
     if correct_answer is not None:
@@ -618,6 +617,11 @@ def _resolve_solution_path(config: ElementConfig) -> Path | None:
     hidden_solution_path = config.question_path / ".solution"
     if hidden_solution_path.exists():
         return hidden_solution_path
+
+    if config.language == "python":
+        python_grader_solution_path = config.question_path / "tests" / "ans.py"
+        if python_grader_solution_path.exists():
+            return python_grader_solution_path
 
     return None
 
