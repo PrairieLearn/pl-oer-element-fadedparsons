@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import prairielearn as pl  # type: ignore
 import base64
 import html as html_lib
 import json
@@ -8,10 +7,11 @@ import random
 import re
 from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import Any, Literal, TypeAlias, TypedDict
+from typing import Any, Literal, TypeAlias, TypedDict, assert_never
 
 import chevron
 import lxml.html as xml
+import prairielearn as pl  # type: ignore
 
 REQUIRED_ATTRIBS = ["answers-name"]
 OPTIONAL_ATTRIBS = [
@@ -185,6 +185,38 @@ def parse(element_html: str, data: pl.QuestionData) -> None:
     )
 
 
+def test(element_html: str, data: pl.ElementTestData) -> None:
+    """Create a raw submission for PrairieLearn's question testing workflow."""
+
+    config = _build_config(element_html, data)
+    test_type = data["test_type"]
+    main_key = f"{config.answers_name}.main"
+
+    if test_type == "correct":
+        correct_answer = data["correct_answers"].get(config.answers_name)
+        if correct_answer is None:
+            return
+        data["raw_submitted_answers"][main_key] = _serialize_test_source(correct_answer)
+    elif test_type == "incorrect":
+        data["raw_submitted_answers"][main_key] = _serialize_test_source("")
+    elif test_type == "invalid":
+        incomplete_line: SavedLine = {
+            "indent": 0,
+            "pinned": False,
+            "codeSnippets": ["", ""],
+            "blankValues": [""],
+            "blankPlaceholders": [""],
+        }
+        data["raw_submitted_answers"][main_key] = json.dumps(
+            {"solution": [incomplete_line], "starter": []}
+        )
+        incomplete_blank_message = _find_empty_blank_message([incomplete_line])
+        assert incomplete_blank_message is not None
+        data["format_errors"][config.answers_name] = incomplete_blank_message
+    else:
+        assert_never(test_type)
+
+
 def _parse_element(element_html: str) -> xml.HtmlElement:
     """Parse the element markup and validate supported attributes."""
 
@@ -195,6 +227,25 @@ def _parse_element(element_html: str) -> xml.HtmlElement:
         optional_attribs=OPTIONAL_ATTRIBS,
     )
     return element
+
+
+def _serialize_test_source(source_code: str) -> str:
+    """Serialize source code using the browser widget's saved-state schema."""
+
+    solution: list[SavedLine] = []
+    if source_code:
+        solution = [
+            {
+                "indent": 0,
+                "pinned": False,
+                "codeSnippets": [source_line],
+                "blankValues": [],
+                "blankPlaceholders": [],
+            }
+            for source_line in source_code.split("\n")
+        ]
+
+    return json.dumps({"solution": solution, "starter": []})
 
 
 def _build_config(element_html: str, data: pl.QuestionData) -> ElementConfig:
@@ -561,7 +612,7 @@ def _infer_correct_answer(config: ElementConfig) -> str | None:
     ):
         return None
 
-    indent_levels = sorted(set(line.raw_leading_spaces for line in solution_lines))
+    indent_levels = sorted({line.raw_leading_spaces for line in solution_lines})
 
     inferred_lines: list[SavedLine] = [
         {

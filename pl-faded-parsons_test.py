@@ -1,5 +1,5 @@
-import importlib
 import base64
+import importlib
 import json
 import os
 import sys
@@ -238,6 +238,82 @@ def test_parse_reports_incomplete_blank_without_submitting_file() -> None:
 
     assert data["format_errors"]["fpp"].startswith("Your answer has incomplete blanks")
     assert "_files" not in data["submitted_answers"]
+
+
+def test_test_correct_round_trips_reference_source_and_submitted_file() -> None:
+    data = _base_data()
+    source = "def f():\n    return 42\n"
+    data["test_type"] = "correct"
+    data["correct_answers"]["fpp"] = source
+    data["partial_scores"] = {"question-owned": {"score": 0.25}}
+    data["score"] = 0.25
+
+    pl_faded.test(_element("def f():\n    return ___"), data)
+
+    saved_state = json.loads(data["raw_submitted_answers"]["fpp.main"])
+    assert saved_state["starter"] == []
+    assert [line["codeSnippets"] for line in saved_state["solution"]] == [
+        ["def f():"],
+        ["    return 42"],
+        [""],
+    ]
+    assert data["partial_scores"] == {"question-owned": {"score": 0.25}}
+    assert data["score"] == 0.25
+
+    pl_faded.parse(_element("def f():\n    return ___"), data)
+
+    assert data["submitted_answers"]["fpp"] == source
+    submitted = data["submitted_answers"]["_files"][0]
+    assert submitted["name"] == "user_code.py"
+    assert base64.b64decode(submitted["contents"]).decode() == source
+
+
+def test_test_correct_without_reference_answer_defers_to_question_test() -> None:
+    data = _base_data()
+    data["test_type"] = "correct"
+    data["raw_submitted_answers"]["question-owned"] = "answer"
+
+    pl_faded.test(_element("return ___"), data)
+
+    assert data["raw_submitted_answers"] == {"question-owned": "answer"}
+
+
+def test_test_incorrect_creates_valid_empty_source_submission() -> None:
+    data = _base_data()
+    data["test_type"] = "incorrect"
+
+    pl_faded.test(_element("print('answer')"), data)
+
+    assert json.loads(data["raw_submitted_answers"]["fpp.main"]) == {
+        "solution": [],
+        "starter": [],
+    }
+
+    pl_faded.parse(_element("print('answer')"), data)
+
+    assert data["format_errors"] == {}
+    assert data["submitted_answers"]["fpp"] == ""
+    submitted = data["submitted_answers"]["_files"][0]
+    assert base64.b64decode(submitted["contents"]).decode() == ""
+
+
+def test_test_invalid_reproduces_incomplete_blank_error_without_authored_fade() -> None:
+    data = _base_data()
+    data["test_type"] = "invalid"
+
+    pl_faded.test(_element("print('answer')"), data)
+
+    expected_error = data["format_errors"]["fpp"]
+    saved_state = json.loads(data["raw_submitted_answers"]["fpp.main"])
+    assert saved_state["solution"][0]["blankValues"] == [""]
+
+    data["format_errors"] = {}
+    pl_faded.parse(_element("print('answer')"), data)
+
+    assert data["format_errors"]["fpp"] == expected_error
+    assert "fpp" not in data["submitted_answers"]
+    assert "_files" not in data["submitted_answers"]
+
 
 
 def test_render_question_builds_one_tray_with_pre_and_post_text() -> None:
