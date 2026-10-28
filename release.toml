@@ -7,19 +7,6 @@ history_source = "elements/pl-faded-parsons"
 source = "elements/pl-faded-parsons"
 destination = "."
 
-# File destinations include the final filename.
-[[include]]
-source = "README.md"
-destination = "README.md"
-
-[[include]]
-source = "images"
-destination = "images"
-
 [[include]]
 source = "LICENSE"
 destination = "LICENSE"
-
-[[include]]
-source = ".gitignore"
-destination = ".gitignore"
