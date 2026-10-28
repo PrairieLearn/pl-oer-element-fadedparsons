@@ -4,6 +4,13 @@ This element was developed by the [ACE Lab at UC Berkeley](https://acelab.berkel
 
 If you like this element, you can use it in your own PrairieLearn course by copying the contents of the `elements` folder into your own course repository. After syncing, the element can be used as illustrated by the example question that is also contained in this repository.
 
+To install only the element and its release history, clone the `release` branch
+directly into your course:
+
+```sh
+git clone --branch release https://github.com/PrairieLearn/pl-oer-element-fadedparsons.git elements/pl-faded-parsons
+```
+
 
 ## `pl-faded-parsons` element
 
@@ -159,3 +166,14 @@ The following work provides more context on the benefits of Faded Parsons Proble
 [Lauren Zhou, Akshit Dewan, Anirudh Kothapalli, Pamela Fox, Michael Ball, and Thomas Joseph. 2023. Implementing Faded Parsons Problems in a Very Large CS1 Course. In Proceedings of the 54th ACM Technical Symposium on Computer Science Education V. 2 (SIGCSE 2023). Association for Computing Machinery, New York, NY, USA, 1356. https://doi.org/10.1145/3545947.3576300](https://dl.acm.org/doi/abs/10.1145/3545947.3576300)
 
 [Slide deck for a CS 194-244 project at University of California, Berkeley around problem autogeneration](https://docs.google.com/presentation/d/1XPSyo1BaQnEEaCSphn9YJi3tg7m5fiIwGa7qGVNdAzg/edit?usp=sharing)
+
+
+### Release contents
+
+Pushing to `main` rebuilds the `release` branch from the sources mapped in
+`release.toml`. `history_source` selects the directory whose Git history anchors
+the release branch. Each `[[include]]` entry has a `source` path relative to the
+repository root and a `destination` path relative to the release root.
+Directories are copied recursively; file destinations include the final
+filename. Use `destination = "."` to place a source directory's contents at the
+release root.

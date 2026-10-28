@@ -1,0 +1,25 @@
+version = 1
+history_source = "elements/pl-faded-parsons"
+
+# Directory sources are copied recursively. A destination of "." places their
+# contents at the root of the release branch.
+[[include]]
+source = "elements/pl-faded-parsons"
+destination = "."
+
+# File destinations include the final filename.
+[[include]]
+source = "README.md"
+destination = "README.md"
+
+[[include]]
+source = "images"
+destination = "images"
+
+[[include]]
+source = "LICENSE"
+destination = "LICENSE"
+
+[[include]]
+source = ".gitignore"
+destination = ".gitignore"
